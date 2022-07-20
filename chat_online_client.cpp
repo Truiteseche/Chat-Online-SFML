@@ -1,6 +1,6 @@
 
 /*
-g++ src/chat_online/chat_online_client.cpp -o bin/client -I include -L lib -lmingw32 -lsfml-main -lsfml-graphics -lsfml-audio -lsfml-system -lsfml-window
+g++ src/Chat-Online-SFML/chat_online_client.cpp -o bin/client -I include -L lib -lmingw32 -lsfml-main -lsfml-graphics -lsfml-audio -lsfml-system -lsfml-window
 */
 
 #include <iostream>
@@ -8,13 +8,12 @@ g++ src/chat_online/chat_online_client.cpp -o bin/client -I include -L lib -lmin
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 
-
 int main(void)
 {
     sf::RenderWindow window(sf::VideoMode(800, 700), "Chat Online Client", sf::Style::Default);
     window.setFramerateLimit(60);
 
-    // SETTINGS INFORMATIONS //
+    // SFML INFORMATIONS //
     std::cout << "Antialiasing level : " << window.getSettings().antialiasingLevel << std::endl;
     std::cout << "Attribute flags : " << window.getSettings().attributeFlags << std::endl;
     std::cout << "Core : " << window.getSettings().Core << std::endl;

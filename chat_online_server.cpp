@@ -1,6 +1,6 @@
 
 /*
-g++ src/chat_online/chat_online_server.cpp -o bin/server -I include -L lib -lmingw32 -lsfml-main -lsfml-graphics -lsfml-audio -lsfml-system -lsfml-window
+g++ src/Chat-Online-SFML/chat_online_server.cpp -o bin/server -I include -L lib -lmingw32 -lsfml-main -lsfml-graphics -lsfml-audio -lsfml-system -lsfml-window
 */
 
 #include <iostream>
@@ -13,7 +13,7 @@ int main(void)
     sf::RenderWindow window(sf::VideoMode(800, 700), "Chat Online Server", sf::Style::Default);
     window.setFramerateLimit(60);
 
-    // SETTINGS INFORMATIONS //
+    // SFML INFORMATIONS //
     std::cout << "Antialiasing level : " << window.getSettings().antialiasingLevel << std::endl;
     std::cout << "Attribute flags : " << window.getSettings().attributeFlags << std::endl;
     std::cout << "Core : " << window.getSettings().Core << std::endl;
@@ -24,17 +24,20 @@ int main(void)
     std::cout << "sRGB capable : " << window.getSettings().sRgbCapable << std::endl;
     std::cout << "Stencil bits : " << window.getSettings().stencilBits << std::endl;
 
-    sf::TcpListener listener;
+    
 
-    // Online TCP Initialisation //
-    const unsigned short remotePort = 53000;
-    sf::Socket::Status status = listener.listen(remotePort);
+    // TCP Initialisation //
+    sf::TcpListener listener;
+    const unsigned short port = 53000;
+
+    //Listen port
+    sf::Socket::Status status = listener.listen(port);
     if(status != sf::Socket::Done)
     {
         std::cout << "An unexpected error happened : " << status << std::endl;
         return EXIT_FAILURE;
     }
-    std::cout << "TCP Listener is listening on port " << remotePort << std::endl;
+    std::cout << "TCP listening on port " << port << std::endl;
     
     //Accept new connection
     sf::TcpSocket client;
